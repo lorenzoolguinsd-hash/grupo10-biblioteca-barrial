@@ -2,6 +2,7 @@
 
 ## 1. Introducción
 
+
 El sistema de gestión de la biblioteca barrial se desarrollará utilizando Java y programación orientada a objetos.
 
 Se propone organizar el programa mediante clases que representen los elementos principales de una biblioteca: libros, socios y préstamos.
