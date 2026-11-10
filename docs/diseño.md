@@ -37,7 +37,7 @@ Se encarga de administrar los libros y los socios.
 Responsabilidades:
 - Registrar y eliminar libros.
 - Buscar y listar libros.
-- Registrar y buscar socios.
+- Registrar buscar y listar socios.
 - Gestionar préstamos y devoluciones.
 
 Atributos propuestos:
