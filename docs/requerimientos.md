@@ -4,7 +4,6 @@
 
 Desarrollar un sistema de gestión para una biblioteca barrial que permita administrar libros, socios y préstamos mediante un programa escrito en Java.
 
-
 ## 2. Requerimientos funcionales
 
 El sistema deberá permitir:
