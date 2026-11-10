@@ -45,3 +45,5 @@ Como bibliotecario, quiero consultar los libros que tiene prestados cada socio p
 ## Consideraciones
 
 Estas historias representan las funcionalidades previstas para la primera versión del sistema. Su alcance podrá ajustarse durante la etapa de análisis y diseño.
+
+10/11, tras revisar los cambios, confirmo el documento. 
