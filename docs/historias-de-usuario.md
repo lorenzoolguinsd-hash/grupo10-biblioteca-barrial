@@ -14,11 +14,11 @@ Como bibliotecario, quiero registrar nuevos libros para mantener actualizado el 
 
 Como bibliotecario, quiero eliminar libros del catálogo para mantener la información actualizada.
 
-### HU03 - Buscar libros
+### HU03 - Buscar libros (por titulo o codigo)
 
 Como bibliotecario, quiero buscar libros por título o código identificador para encontrar rápidamente un ejemplar.
 
-### HU04 - Consultar catálogo
+### HU04 - Consultar catálogo (mostrar todos los libro registrados)
 
 Como bibliotecario, quiero visualizar todos los libros registrados para conocer el material disponible.
 
@@ -30,7 +30,7 @@ Como bibliotecario, quiero registrar nuevos socios para llevar un control de las
 
 Como bibliotecario, quiero buscar socios registrados para consultar sus datos.
 
-### HU07 - Registrar préstamos
+### HU07 - Registrar préstamos de libros
 
 Como bibliotecario, quiero registrar el préstamo de un libro a un socio para llevar un control de los ejemplares prestados.
 
@@ -38,7 +38,7 @@ Como bibliotecario, quiero registrar el préstamo de un libro a un socio para ll
 
 Como bibliotecario, quiero registrar la devolución de un libro para actualizar su disponibilidad.
 
-### HU09 - Consultar préstamos por socio
+### HU09 - Consultar libros préstados por socio
 
 Como bibliotecario, quiero consultar los libros que tiene prestados cada socio para conocer su situación actual.
 
