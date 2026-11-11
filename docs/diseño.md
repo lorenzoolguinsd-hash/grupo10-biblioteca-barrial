@@ -206,100 +206,53 @@ Administra el catálogo y los socios. Coordina las operaciones y verifica las re
 
 ---
 
-### RELACION ENTRE CLASES (Nestor Oviedo)
+### RELACIÓN ENTRE CLASES (Nestor Oviedo)
 
-El diseño del sistema se fundamenta en los principios de la Programación Orientada a Objetos (POO), utilizando relaciones de composición y colaboración entre clases basadas en el concepto de *"tiene un"*.
-
----
-
-### 1. Relación `Biblioteca` ➔ `Libro` (Composición 1 a N)
-* **Tipo de relación**: Composición / Colaboración.
-* **Descripción**: La clase `Biblioteca` actúa como el contenedor principal del sistema y posee como atributo una lista `List<Libro> libros` para administrar el catálogo completo de ejemplares.
-* **Justificación**: Representa la premisa *"La biblioteca tiene un catálogo de libros"*. La biblioteca controla el alta, la baja, la búsqueda y la disponibilidad de los objetos de tipo `Libro`.
+El diseño del sistema se fundamenta en los principios de la Programación Orientada a Objetos (POO), utilizando relaciones de asociación y dependencia entre clases, basadas en la interacción y administración de objetos.
 
 ---
 
-### 2. Relación `Biblioteca` ➔ `Socio` (Composición 1 a N)
-* **Tipo de relación**: Composición / Colaboración.
-* **Descripción**: La clase `Biblioteca` mantiene el registro general de usuarios a través del atributo `List<Socio> socios`.
-* **Justificación**: Responde a la premisa *"La biblioteca tiene socios registrados"*. `Biblioteca` coordina las operaciones globales de préstamos y devoluciones validando los datos de los socios.
+### 1. Relación `Biblioteca` ➔ `Libro` (Asociación 1 a N)
+
+- **Tipo de relación**: Asociación.
+- **Descripción**: La clase `Biblioteca` actúa como administrador principal del sistema y posee como atributo una lista `List<Libro> libros` para gestionar el catálogo completo de ejemplares.
+- **Multiplicidad**: Una `Biblioteca` puede administrar cero o muchos objetos `Libro`.
+- **Justificación**: Representa la premisa *"La biblioteca administra un catálogo de libros"*. `Biblioteca` controla el alta, la baja, la búsqueda y la disponibilidad de los objetos de tipo `Libro`.
 
 ---
 
-### 3. Relación `Socio` ➔ `Libro` (Composición encapsulada - Colección de Colecciones)
-* **Tipo de relación**: Composición interna protegida por encapsulamiento.
-* **Descripción**: Cada objeto de la clase `Socio` mantiene su propia lista privada `List<Libro> librosPrestados`. Al almacenarse los socios dentro de la lista general de la biblioteca, se constituye la **colección de colecciones** del sistema.
-* **Protección de datos**: Para evitar modificaciones no autorizadas desde clases externas, el método `getLibrosPrestados()` retorna una copia defensiva de la lista, mientras que `agregarLibroPrestado()` y `quitarLibroPrestado()` gestionan la asignación de ejemplares.
+### 2. Relación `Biblioteca` ➔ `Socio` (Asociación 1 a N)
+
+- **Tipo de relación**: Asociación.
+- **Descripción**: La clase `Biblioteca` mantiene el registro general de usuarios a través del atributo `List<Socio> socios`.
+- **Multiplicidad**: Una `Biblioteca` puede registrar cero o muchos objetos `Socio`.
+- **Justificación**: Responde a la premisa *"La biblioteca tiene socios registrados"*. `Biblioteca` coordina las operaciones globales de préstamos y devoluciones, validando los datos de los socios.
+
+---
+
+### 3. Relación `Socio` ➔ `Libro` (Asociación mediante colección de colecciones)
+
+- **Tipo de relación**: Asociación.
+- **Descripción**: Cada objeto de la clase `Socio` mantiene su propia lista privada `List<Libro> librosPrestados`. Al almacenarse los socios dentro de la lista general de la biblioteca, se constituye la **colección de colecciones** del sistema.
+- **Multiplicidad**: Un `Socio` puede tener cero o muchos libros prestados. Cada `Libro` puede estar prestado a cero o un solo socio a la vez.
+- **Protección de datos**: Para evitar modificaciones no autorizadas desde clases externas, el método `getLibrosPrestados()` retorna una copia defensiva de la lista, mientras que `agregarLibroPrestado()` y `quitarLibroPrestado()` gestionan la asignación y devolución de ejemplares.
 
 ---
 
 ### 4. Relación `Main` ➔ `Biblioteca` (Dependencia de uso y orquestación)
-* **Tipo de relación**: Asociación por uso y dependencia.
-* **Descripción**: La clase `Main` (que contiene el método de entrada `main`) no manipula directamente las entidades `Libro` ni `Socio`. En su lugar, instancia un objeto `Biblioteca` y orquesta la interfaz del menú de consola delegando la lógica de negocio.
+
+- **Tipo de relación**: Dependencia.
+- **Descripción**: La clase `Main` (que contiene el método de entrada `main`) instancia un objeto `Biblioteca` y orquesta la interfaz del menú de consola, delegando en dicha clase la lógica de negocio.
+- **Justificación**: `Main` se encarga de la interacción con el usuario, solicita los datos y muestra los resultados, mientras que `Biblioteca` administra las operaciones y validaciones del sistema.
 
 ---
 
-## Diagrama de Clases UML (Nestor Oviedo)
+### CRITERIOS PARA EL DIAGRAMA UML
 
-A continuación se presenta la representación del diagrama de clases del sistema, cumpliendo con la notación estándar de visibilidad (`-` para atributos privados y `+` para métodos y constructores públicos):
-
-```text
-+--------------------------------------------------------------------+
-|                               Libro                                |
-+--------------------------------------------------------------------+
-| - codigo: String                                                   |
-| - titulo: String                                                   |
-| - autor: String                                                    |
-| - disponible: boolean                                              |
-+--------------------------------------------------------------------+
-| + Libro(codigo: String, titulo: String, autor: String)             |
-| + getCodigo(): String                                              |
-| + getTitulo(): String                                              |
-| + getAutor(): String                                               |
-| + isDisponible(): boolean                                          |
-| + setDisponible(disponible: boolean): void                         |
-| + toString(): String                                               |
-+--------------------------------------------------------------------+
-                                  ^
-                                  | 0..* (librosPrestados)
-                                  |
-+---------------------------------+----------------------------------+
-|                               Socio                                |
-+--------------------------------------------------------------------+
-| - numeroSocio: int                                                 |
-| - nombre: String                                                   |
-| - librosPrestados: List<Libro>                                     |
-+--------------------------------------------------------------------+
-| + Socio(numeroSocio: int, nombre: String)                          |
-| + getNumeroSocio(): int                                            |
-| + getNombre(): String                                              |
-| + getLibrosPrestados(): List<Libro>                                |
-| + agregarLibroPrestado(libro: Libro): boolean                      |
-| + quitarLibroPrestado(libro: Libro): boolean                      |
-| + toString(): String                                               |
-+--------------------------------------------------------------------+
-
-+--------------------------------------------------------------------+
-|                             Biblioteca                             |
-+--------------------------------------------------------------------+
-| - libros: List<Libro>                                              |
-| - socios: List<Socio>                                              |
-+--------------------------------------------------------------------+
-| + Biblioteca()                                                     |
-| + registrarLibro(libro: Libro): boolean                            |
-| + eliminarLibro(codigo: String): boolean                           |
-| + buscarLibroPorCodigo(codigo: String): Libro                      |
-| + buscarLibrosPorTitulo(titulo: String): List<Libro>               |
-| + listarLibros(): void                                             |
-| + registrarSocio(socio: Socio): boolean                            |
-| + buscarSocio(numeroSocio: int): Socio                             |
-| + listarSocios(): void                                             |
-| + prestarLibro(codigo: String, numeroSocio: int): boolean          |
-| + devolverLibro(codigo: String, numeroSocio: int): boolean         |
-| + consultarPrestamos(numeroSocio: int): void                       |
-+--------------------------------------------------------------------+
-
----
+- Las relaciones entre `Biblioteca`, `Libro` y `Socio` se representan mediante líneas de asociación.
+- La relación entre `Main` y `Biblioteca` se representa mediante una línea discontinua con una flecha hacia `Biblioteca`, indicando una dependencia.
+- Las multiplicidades deben reflejar la cantidad de objetos que pueden participar en cada relación.
+- La colección de colecciones se representa mediante la lista de socios de `Biblioteca` y la lista de libros prestados de cada `Socio`.
 
 ### Criterios para el diagrama UML y la implementación
 
