@@ -113,3 +113,18 @@ Para prevenir conflictos al trabajar sobre el mismo documento (`docs/diseno.md`)
 - La tarea «Diseñar el menú de consola» permanece pendiente para la siguiente etapa.
 
 **Conclusión:** se completó la etapa principal de análisis y se dejó preparada la organización del trabajo para comenzar con el diseño del sistema en el Día 3.
+
+## Día 3 – Diseño del sistema
+
+Se completó y aprobó el diseño del sistema Biblioteca Barrial tras una revisión final.
+
+Durante esta etapa se definieron:
+- Las clases principales (`Libro`, `Socio`, `Biblioteca` y `Main`).
+- Los atributos y métodos de cada clase.
+- Las relaciones y multiplicidades entre las clases.
+- La estructura del menú de consola.
+- El diagrama de clases UML.
+
+El documento `docs/diseño.md` quedó confirmado como referencia para la etapa de desarrollo.
+
+**Estado:** Día 3 finalizado.
