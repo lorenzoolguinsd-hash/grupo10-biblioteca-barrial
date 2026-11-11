@@ -73,3 +73,43 @@ También se conversó sobre el rumbo del proyecto, se confirmó la propuesta de 
 Continuar con la etapa de análisis: confirmar los requerimientos, validar las historias de usuario y revisar la estructura inicial de las clases propuestas.
 
 
+## Día 2 – Análisis del sistema
+
+**Objetivo:** completar y validar el análisis del sistema, revisar las clases principales y organizar las actividades correspondientes al diseño.
+
+### Actividades realizadas
+
+- Se revisaron y confirmaron los requerimientos del sistema.
+- Se revisaron y confirmaron las historias de usuario.
+- Se verificaron las clases principales propuestas: `Libro`, `Socio` y `Biblioteca`, junto con sus atributos y responsabilidades.
+- Se agregó la responsabilidad de **listar socios** a la clase `Biblioteca`, ya que esta funcionalidad no estaba contemplada inicialmente.
+- Se realizaron modificaciones en los datos de los libros con el objetivo de facilitar y agilizar las búsquedas y el control de la información.
+- Se revisó el diseño preliminar para comprobar que las clases propuestas respondan a las funcionalidades acordadas.
+
+### Organización del trabajo
+
+Se actualizaron las tarjetas correspondientes en el tablero de Trello, trasladando a «Hecho» las tareas que fueron completadas.
+
+También se establecieron las actividades para el Día 3, correspondiente al diseño del sistema:
+
+1. Diseñar el menú de consola.
+2. Elaborar el diagrama de clases UML.
+3. Definir los métodos de cada clase.
+4. Definir las relaciones entre las clases.
+5. Completar el documento de diseño.
+6. Revisar y validar el diseño final.
+
+Se acordó que los integrantes podrán elegir voluntariamente las tareas según sus conocimientos e intereses, evitando asignaciones anticipadas.
+
+Para prevenir conflictos al trabajar sobre el mismo documento (`docs/diseno.md`), se estableció que cada integrante prepare su aporte por separado y que una sola persona se encargue de integrar los cambios en el repositorio. Posteriormente, el documento será revisado en conjunto.
+
+### Estado al finalizar el día
+
+- Requerimientos e historias de usuario revisados y confirmados.
+- Clases principales revisadas y responsabilidades ajustadas.
+- Datos de libros y socios revisados.
+- Documento de diseño preliminar existente, pendiente de completar con el diseño definitivo.
+- Tareas del Día 3 definidas y organizadas en Trello.
+- La tarea «Diseñar el menú de consola» permanece pendiente para la siguiente etapa.
+
+**Conclusión:** se completó la etapa principal de análisis y se dejó preparada la organización del trabajo para comenzar con el diseño del sistema en el Día 3.
