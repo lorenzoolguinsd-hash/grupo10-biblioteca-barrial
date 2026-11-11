@@ -247,9 +247,65 @@ El diseño del sistema se fundamenta en los principios de la Programación Orien
 
 ---
 
-### CRITERIOS PARA EL DIAGRAMA UML
+### CRITERIOS PARA EL DIAGRAMA UML (Francisco Nicolas Olivera)
 
 - Las relaciones entre `Biblioteca`, `Libro` y `Socio` se representan mediante líneas de asociación.
 - La relación entre `Main` y `Biblioteca` se representa mediante una línea discontinua con una flecha hacia `Biblioteca`, indicando una dependencia.
 - Las multiplicidades deben reflejar la cantidad de objetos que pueden participar en cada relación.
 - La colección de colecciones se representa mediante la lista de socios de `Biblioteca` y la lista de libros prestados de cada `Socio`.
+- El siguiente diagrama representa la estructura de clases del sistema, sus atributos, métodos y relaciones
+- 
+classDiagram
+    class Main {
+        +main(String[] args): void
+    }
+
+    class Biblioteca {
+        -List~Libro~ libros
+        -List~Socio~ socios
+        +Biblioteca()
+        +registrarLibro(Libro libro): boolean
+        +eliminarLibro(String codigo): boolean
+        +buscarLibroPorCodigo(String codigo): Libro
+        +buscarLibrosPorTitulo(String titulo): List~Libro~
+        +listarLibros(): void
+        +registrarSocio(Socio socio): boolean
+        +buscarSocio(int numeroSocio): Socio
+        +listarSocios(): void
+        +prestarLibro(String codigo, int numeroSocio): boolean
+        +devolverLibro(String codigo, int numeroSocio): boolean
+        +consultarPrestamos(int numeroSocio): void
+    }
+
+    class Libro {
+        -String codigo
+        -String titulo
+        -String autor
+        -boolean disponible
+        +Libro(String codigo, String titulo, String autor)
+        +getCodigo(): String
+        +getTitulo(): String
+        +getAutor(): String
+        +isDisponible(): boolean
+        +setDisponible(boolean disponible): void
+        +toString(): String
+    }
+
+    class Socio {
+        -int numeroSocio
+        -String nombre
+        -List~Libro~ librosPrestados
+        +Socio(int numeroSocio, String nombre)
+        +getNumeroSocio(): int
+        +getNombre(): String
+        +getLibrosPrestados(): List~Libro~
+        +agregarLibroPrestado(Libro libro): boolean
+        +quitarLibroPrestado(Libro libro): boolean
+        +toString(): String
+    }
+
+    Main ..> Biblioteca : usa
+    Biblioteca "1" --> "0..*" Libro : administra
+    Biblioteca "1" --> "0..*" Socio : registra
+    Socio "0..1" --> "0..*" Libro : tiene prestados
+
