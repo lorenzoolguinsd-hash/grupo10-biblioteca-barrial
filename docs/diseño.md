@@ -239,6 +239,67 @@ El diseño del sistema se fundamenta en los principios de la Programación Orien
 
 ---
 
+## Diagrama de Clases UML (Nestor Oviedo)
+
+A continuación se presenta la representación del diagrama de clases del sistema, cumpliendo con la notación estándar de visibilidad (`-` para atributos privados y `+` para métodos y constructores públicos):
+
+```text
++--------------------------------------------------------------------+
+|                               Libro                                |
++--------------------------------------------------------------------+
+| - codigo: String                                                   |
+| - titulo: String                                                   |
+| - autor: String                                                    |
+| - disponible: boolean                                              |
++--------------------------------------------------------------------+
+| + Libro(codigo: String, titulo: String, autor: String)             |
+| + getCodigo(): String                                              |
+| + getTitulo(): String                                              |
+| + getAutor(): String                                               |
+| + isDisponible(): boolean                                          |
+| + setDisponible(disponible: boolean): void                         |
+| + toString(): String                                               |
++--------------------------------------------------------------------+
+                                  ^
+                                  | 0..* (librosPrestados)
+                                  |
++---------------------------------+----------------------------------+
+|                               Socio                                |
++--------------------------------------------------------------------+
+| - numeroSocio: int                                                 |
+| - nombre: String                                                   |
+| - librosPrestados: List<Libro>                                     |
++--------------------------------------------------------------------+
+| + Socio(numeroSocio: int, nombre: String)                          |
+| + getNumeroSocio(): int                                            |
+| + getNombre(): String                                              |
+| + getLibrosPrestados(): List<Libro>                                |
+| + agregarLibroPrestado(libro: Libro): boolean                      |
+| + quitarLibroPrestado(libro: Libro): boolean                      |
+| + toString(): String                                               |
++--------------------------------------------------------------------+
+
++--------------------------------------------------------------------+
+|                             Biblioteca                             |
++--------------------------------------------------------------------+
+| - libros: List<Libro>                                              |
+| - socios: List<Socio>                                              |
++--------------------------------------------------------------------+
+| + Biblioteca()                                                     |
+| + registrarLibro(libro: Libro): boolean                            |
+| + eliminarLibro(codigo: String): boolean                           |
+| + buscarLibroPorCodigo(codigo: String): Libro                      |
+| + buscarLibrosPorTitulo(titulo: String): List<Libro>               |
+| + listarLibros(): void                                             |
+| + registrarSocio(socio: Socio): boolean                            |
+| + buscarSocio(numeroSocio: int): Socio                             |
+| + listarSocios(): void                                             |
+| + prestarLibro(codigo: String, numeroSocio: int): boolean          |
+| + devolverLibro(codigo: String, numeroSocio: int): boolean         |
+| + consultarPrestamos(numeroSocio: int): void                       |
++--------------------------------------------------------------------+
+
+---
 
 ### Criterios para el diagrama UML y la implementación
 
