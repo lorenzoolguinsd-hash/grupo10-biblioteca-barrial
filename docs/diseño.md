@@ -247,23 +247,40 @@ El diseño del sistema se fundamenta en los principios de la Programación Orien
 
 ---
 
-### CRITERIOS PARA EL DIAGRAMA UML
+Escritura
 
-- Las relaciones entre `Biblioteca`, `Libro` y `Socio` se representan mediante líneas de asociación.
-- La relación entre `Main` y `Biblioteca` se representa mediante una línea discontinua con una flecha hacia `Biblioteca`, indicando una dependencia.
+
+
+
+
+RELACIÓN ENTRE CLASES (Nestor Oviedo)
+El diseño del sistema se fundamenta en los principios de la Programación Orientada a Objetos (POO), utilizando relaciones de asociación y dependencia entre clases, basadas en la interacción y administración de objetos.
+
+1. Relación Biblioteca ➔ Libro (Asociación 1 a N)
+- Tipo de relación: Asociación.
+- Descripción: La clase Biblioteca actúa como administrador principal del sistema y posee como atributo una lista List<Libro> libros para gestionar el catálogo completo de ejemplares.
+- Multiplicidad: Una Biblioteca puede administrar cero o muchos objetos Libro.
+- Justificación: Representa la premisa "La biblioteca administra un catálogo de libros". Biblioteca controla el alta, la baja, la búsqueda y la disponibilidad de los objetos de tipo Libro.
+
+2. Relación Biblioteca ➔ Socio (Asociación 1 a N)
+- Tipo de relación: Asociación.
+- Descripción: La clase Biblioteca mantiene el registro general de usuarios a través del atributo List<Socio> socios.
+- Multiplicidad: Una Biblioteca puede registrar cero o muchos objetos Socio.
+- Justificación: Responde a la premisa "La biblioteca tiene socios registrados". Biblioteca coordina las operaciones globales de préstamos y devoluciones, validando los datos de los socios.
+
+3. Relación Socio ➔ Libro (Asociación mediante colección de colecciones)
+- Tipo de relación: Asociación.
+- Descripción: Cada objeto de la clase Socio mantiene su propia lista privada List<Libro> librosPrestados. Al almacenarse los socios dentro de la lista general de la biblioteca, se constituye la colección de colecciones del sistema.
+- Multiplicidad: Un Socio puede tener cero o muchos libros prestados. Cada Libro puede estar prestado a cero o un solo socio a la vez.
+- Protección de datos: Para evitar modificaciones no autorizadas desde clases externas, el método getLibrosPrestados() retorna una copia defensiva de la lista, mientras que agregarLibroPrestado() y quitarLibroPrestado() gestionan la asignación y devolución de ejemplares.
+
+4. Relación Main ➔ Biblioteca (Dependencia de uso y orquestación)
+- Tipo de relación: Dependencia.
+- Descripción: La clase Main (que contiene el método de entrada main) instancia un objeto Biblioteca y orquesta la interfaz del menú de consola, delegando en dicha clase la lógica de negocio.
+- Justificación: Main se encarga de la interacción con el usuario, solicita los datos y muestra los resultados, mientras que Biblioteca administra las operaciones y validaciones del sistema.
+
+CRITERIOS PARA EL DIAGRAMA UML
+- Las relaciones entre Biblioteca, Libro y Socio se representan mediante líneas de asociación.
+- La relación entre Main y Biblioteca se representa mediante una línea discontinua con una flecha hacia Biblioteca, indicando una dependencia.
 - Las multiplicidades deben reflejar la cantidad de objetos que pueden participar en cada relación.
-- La colección de colecciones se representa mediante la lista de socios de `Biblioteca` y la lista de libros prestados de cada `Socio`.
-
-### Criterios para el diagrama UML y la implementación
-
-- Los métodos y constructores indicados son públicos y se representan con el signo `+` en el diagrama UML.
-- Los atributos se mantienen privados y se representan con el signo `-`.
-- Los constructores tienen el mismo nombre que la clase y no llevan tipo de retorno.
-- Se utiliza `String` para el código del libro, `int` para el número de socio y `boolean` para la disponibilidad.
-- `List<Libro>` representa una lista de libros y `List<Socio>` representa una lista de socios. Las listas se inicializan utilizando `ArrayList`.
-- `void` indica que el método no devuelve un valor. Los métodos que devuelven `boolean` indican mediante `true` o `false` si la operación se realizó correctamente.
-- Biblioteca realiza las validaciones generales. Los métodos `agregarLibroPrestado()` y `quitarLibroPrestado()` de Socio son utilizados por Biblioteca para mantener coordinadas la lista de préstamos y la disponibilidad del libro.
-- El menú de consola solicita los datos, llama a los métodos de Biblioteca y muestra el resultado de las operaciones.
-- Cada objeto Libro representa un ejemplar con código único. Un libro solo puede estar prestado a un socio a la vez.
-- Los códigos de los libros y los números de los socios se mantienen sin cambios después del registro para conservar su identificación.
-- La lista interna de préstamos de Socio no debe poder modificarse directamente desde otras clases. Para consultar sus elementos se utiliza `getLibrosPrestados()`, que devuelve una copia de la lista.
+- La colección de colecciones se representa mediante la lista de socios de Biblioteca y la lista de libros prestados de cada Socio.
