@@ -66,3 +66,44 @@ Desde ese menú podrá seleccionar las operaciones disponibles para administrar 
 ## 6. Consideraciones
 
 Este diseño representa una propuesta inicial. Los atributos, métodos y relaciones definitivos se establecerán durante el desarrollo del proyecto.
+
+## Diseño del menú de consola (Lorenzo Olguin)
+
+El sistema contará con una interfaz de consola organizada en tres secciones principales: gestión de libros, gestión de socios y gestión de préstamos.
+
+### Menú principal
+
+1. Gestión de libros
+2. Gestión de socios
+3. Gestión de préstamos
+0. Salir
+
+### Gestión de libros
+
+1. Registrar libro
+2. Buscar libro
+3. Listar libros
+4. Eliminar libro
+0. Volver al menú principal
+
+### Gestión de socios
+
+1. Registrar socio
+2. Buscar socio
+3. Listar socios
+0. Volver al menú principal
+
+### Gestión de préstamos
+
+1. Registrar préstamo
+2. Registrar devolución
+3. Consultar préstamos de un socio
+0. Volver al menú principal
+
+### Funcionamiento del menú
+
+- Cada sección tendrá una opción para regresar al menú principal.
+- Después de realizar una operación, el sistema mostrará un mensaje indicando si se realizó correctamente o si ocurrió algún error.
+- Una vez mostrado el resultado, el sistema volverá al submenú correspondiente.
+- Si el usuario ingresa una opción no válida, se mostrará un mensaje de error y se volverá a presentar el menú correspondiente.
+- La opción «Salir» finalizará la ejecución del programa.
