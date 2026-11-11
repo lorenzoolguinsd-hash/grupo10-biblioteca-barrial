@@ -317,6 +317,7 @@ classDiagram
 
 ### Consideraciones
 
+
 - Los atributos son privados y se representan con el signo `-`.
 - Los métodos y constructores son públicos y se representan con el signo `+`.
 - Las asociaciones muestran cómo se relacionan las clases dentro del sistema.
