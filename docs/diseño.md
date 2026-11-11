@@ -204,6 +204,42 @@ Administra el catálogo y los socios. Coordina las operaciones y verifica las re
 - `consultarPrestamos(int numeroSocio): void`
   - Busca al socio y muestra los libros que tiene prestados. Si no existe, informa que el socio no está registrado. Si su lista está vacía, informa que no tiene préstamos.
 
+---
+
+### RELACION ENTRE CLASES (Nestor Oviedo)
+
+El diseño del sistema se fundamenta en los principios de la Programación Orientada a Objetos (POO), utilizando relaciones de composición y colaboración entre clases basadas en el concepto de *"tiene un"*.
+
+---
+
+### 1. Relación `Biblioteca` ➔ `Libro` (Composición 1 a N)
+* **Tipo de relación**: Composición / Colaboración.
+* **Descripción**: La clase `Biblioteca` actúa como el contenedor principal del sistema y posee como atributo una lista `List<Libro> libros` para administrar el catálogo completo de ejemplares.
+* **Justificación**: Representa la premisa *"La biblioteca tiene un catálogo de libros"*. La biblioteca controla el alta, la baja, la búsqueda y la disponibilidad de los objetos de tipo `Libro`.
+
+---
+
+### 2. Relación `Biblioteca` ➔ `Socio` (Composición 1 a N)
+* **Tipo de relación**: Composición / Colaboración.
+* **Descripción**: La clase `Biblioteca` mantiene el registro general de usuarios a través del atributo `List<Socio> socios`.
+* **Justificación**: Responde a la premisa *"La biblioteca tiene socios registrados"*. `Biblioteca` coordina las operaciones globales de préstamos y devoluciones validando los datos de los socios.
+
+---
+
+### 3. Relación `Socio` ➔ `Libro` (Composición encapsulada - Colección de Colecciones)
+* **Tipo de relación**: Composición interna protegida por encapsulamiento.
+* **Descripción**: Cada objeto de la clase `Socio` mantiene su propia lista privada `List<Libro> librosPrestados`. Al almacenarse los socios dentro de la lista general de la biblioteca, se constituye la **colección de colecciones** del sistema.
+* **Protección de datos**: Para evitar modificaciones no autorizadas desde clases externas, el método `getLibrosPrestados()` retorna una copia defensiva de la lista, mientras que `agregarLibroPrestado()` y `quitarLibroPrestado()` gestionan la asignación de ejemplares.
+
+---
+
+### 4. Relación `Main` ➔ `Biblioteca` (Dependencia de uso y orquestación)
+* **Tipo de relación**: Asociación por uso y dependencia.
+* **Descripción**: La clase `Main` (que contiene el método de entrada `main`) no manipula directamente las entidades `Libro` ni `Socio`. En su lugar, instancia un objeto `Biblioteca` y orquesta la interfaz del menú de consola delegando la lógica de negocio.
+
+---
+
+
 ### Criterios para el diagrama UML y la implementación
 
 - Los métodos y constructores indicados son públicos y se representan con el signo `+` en el diagrama UML.
