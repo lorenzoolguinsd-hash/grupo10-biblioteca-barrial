@@ -247,34 +247,39 @@ El diseño del sistema se fundamenta en los principios de la Programación Orien
 
 ---
 
-### CRITERIOS PARA EL DIAGRAMA UML (Francisco Nicolas Olivera)
+### CRITERIOS PARA EL DIAGRAMA UML
 
 - Las relaciones entre `Biblioteca`, `Libro` y `Socio` se representan mediante líneas de asociación.
 - La relación entre `Main` y `Biblioteca` se representa mediante una línea discontinua con una flecha hacia `Biblioteca`, indicando una dependencia.
 - Las multiplicidades deben reflejar la cantidad de objetos que pueden participar en cada relación.
 - La colección de colecciones se representa mediante la lista de socios de `Biblioteca` y la lista de libros prestados de cada `Socio`.
-- El siguiente diagrama representa la estructura de clases del sistema, sus atributos, métodos y relaciones
-- 
+
+
+## Diagrama de clases UML (Francisco Olivera)
+
+El siguiente diagrama representa la estructura del sistema Biblioteca Barrial, incluyendo sus clases, atributos, métodos y relaciones. Se basa en las definiciones y responsabilidades establecidas previamente.
+
+```mermaid
 classDiagram
     class Main {
-        +main(String[] args): void
+        +main(String[] args) void
     }
 
     class Biblioteca {
         -List~Libro~ libros
         -List~Socio~ socios
         +Biblioteca()
-        +registrarLibro(Libro libro): boolean
-        +eliminarLibro(String codigo): boolean
-        +buscarLibroPorCodigo(String codigo): Libro
-        +buscarLibrosPorTitulo(String titulo): List~Libro~
-        +listarLibros(): void
-        +registrarSocio(Socio socio): boolean
-        +buscarSocio(int numeroSocio): Socio
-        +listarSocios(): void
-        +prestarLibro(String codigo, int numeroSocio): boolean
-        +devolverLibro(String codigo, int numeroSocio): boolean
-        +consultarPrestamos(int numeroSocio): void
+        +registrarLibro(Libro libro) boolean
+        +eliminarLibro(String codigo) boolean
+        +buscarLibroPorCodigo(String codigo) Libro
+        +buscarLibrosPorTitulo(String titulo) List~Libro~
+        +listarLibros() void
+        +registrarSocio(Socio socio) boolean
+        +buscarSocio(int numeroSocio) Socio
+        +listarSocios() void
+        +prestarLibro(String codigo, int numeroSocio) boolean
+        +devolverLibro(String codigo, int numeroSocio) boolean
+        +consultarPrestamos(int numeroSocio) void
     }
 
     class Libro {
@@ -283,12 +288,12 @@ classDiagram
         -String autor
         -boolean disponible
         +Libro(String codigo, String titulo, String autor)
-        +getCodigo(): String
-        +getTitulo(): String
-        +getAutor(): String
-        +isDisponible(): boolean
-        +setDisponible(boolean disponible): void
-        +toString(): String
+        +getCodigo() String
+        +getTitulo() String
+        +getAutor() String
+        +isDisponible() boolean
+        +setDisponible(boolean disponible) void
+        +toString() String
     }
 
     class Socio {
@@ -296,16 +301,24 @@ classDiagram
         -String nombre
         -List~Libro~ librosPrestados
         +Socio(int numeroSocio, String nombre)
-        +getNumeroSocio(): int
-        +getNombre(): String
-        +getLibrosPrestados(): List~Libro~
-        +agregarLibroPrestado(Libro libro): boolean
-        +quitarLibroPrestado(Libro libro): boolean
-        +toString(): String
+        +getNumeroSocio() int
+        +getNombre() String
+        +getLibrosPrestados() List~Libro~
+        +agregarLibroPrestado(Libro libro) boolean
+        +quitarLibroPrestado(Libro libro) boolean
+        +toString() String
     }
 
     Main ..> Biblioteca : usa
     Biblioteca "1" --> "0..*" Libro : administra
     Biblioteca "1" --> "0..*" Socio : registra
     Socio "0..1" --> "0..*" Libro : tiene prestados
+```
 
+### Consideraciones
+
+- Los atributos son privados y se representan con el signo `-`.
+- Los métodos y constructores son públicos y se representan con el signo `+`.
+- Las asociaciones muestran cómo se relacionan las clases dentro del sistema.
+- La dependencia entre `Main` y `Biblioteca` representa el uso de sus funcionalidades desde el menú de consola.
+- La relación entre `Socio` y `Libro` representa la colección de colecciones utilizada para administrar los préstamos.
