@@ -128,3 +128,32 @@ Durante esta etapa se definieron:
 El documento `docs/diseño.md` quedó confirmado como referencia para la etapa de desarrollo.
 
 **Estado:** Día 3 finalizado.
+
+
+## Día 4 – Desarrollo de las clases principales
+
+**Fecha:** 12/11/2026
+
+### Actividades realizadas
+
+Durante esta jornada se comenzó con la etapa de desarrollo del sistema en Java, utilizando Eclipse como entorno de programación.
+
+Se creó la estructura inicial del proyecto y se implementaron las tres clases principales:
+
+- **`Libro`:** se definieron sus atributos, constructor, métodos getters y setter, y el método `toString()`.
+- **`Socio`:** se implementaron sus atributos, constructor, getters y los métodos para agregar y quitar libros prestados.
+- **`Biblioteca`:** se desarrollaron las operaciones para registrar, eliminar, buscar y listar libros y socios, además de gestionar los préstamos, las devoluciones y las consultas de libros prestados.
+
+### Verificación
+
+Se guardaron los archivos y se comprobó que las tres clases compilaran correctamente en Eclipse, sin errores.
+
+### Estado al finalizar el día
+
+- Estructura inicial del proyecto Java creada.
+- Clases `Libro`, `Socio` y `Biblioteca` implementadas.
+- Código incorporado al repositorio de GitHub.
+- Compilación verificada correctamente.
+- Clase `Main` y menú de consola pendientes para la siguiente jornada.
+
+**Conclusión:** se completó la implementación inicial de las clases principales del sistema, dejando preparada la base para integrar las funcionalidades mediante el menú de consola en el Día 5.
