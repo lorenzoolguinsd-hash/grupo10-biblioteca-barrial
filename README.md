@@ -50,4 +50,8 @@ https://trello.com/invite/b/6af0df788c022d312d51dbea/ATTIe73de51cf76c929623784f5
 
 ## Estado del proyecto
 
-Proyecto en etapa de planificación y análisis.
+Proyecto en etapa de desarrollo e integración.
+
+Se implementaron las clases principales (`Libro`, `Socio` y `Biblioteca`) y el menú de consola (`Main`). Se realizaron pruebas de funcionamiento de las operaciones de gestión de libros, socios y préstamos.
+
+Actualmente se continúa con los testeos y las pruebas del sistema.
