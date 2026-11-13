@@ -48,6 +48,10 @@ También se implementará una colección de colecciones para representar los lib
 
 https://trello.com/invite/b/6af0df788c022d312d51dbea/ATTIe73de51cf76c929623784f519f7e8d92826C6190/grupo-10-biblioteca-barrial
 
+## Instrucciones de uso
+
+Para conocer cómo utilizar el sistema, consultar el documento [Instrucciones de uso](docs/instrucciones-uso.md).
+
 ## Estado del proyecto
 
 Proyecto en etapa de desarrollo e integración.
