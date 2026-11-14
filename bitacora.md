@@ -157,3 +157,52 @@ Se guardaron los archivos y se comprobó que las tres clases compilaran correcta
 - Clase `Main` y menú de consola pendientes para la siguiente jornada.
 
 **Conclusión:** se completó la implementación inicial de las clases principales del sistema, dejando preparada la base para integrar las funcionalidades mediante el menú de consola en el Día 5.
+
+
+## Día 5 – Integración y pruebas del sistema
+
+**Fecha:** 13/11/2026
+
+### Actividades realizadas
+
+Durante esta jornada se completó el desarrollo de la clase `Main`, integrando las clases `Libro`, `Socio` y `Biblioteca` mediante un menú principal y sus respectivos submenús.
+
+Se incorporaron las opciones para gestionar libros, socios y préstamos, permitiendo ejecutar las operaciones definidas durante la etapa de diseño.
+
+También se realizaron pruebas funcionales para comprobar el funcionamiento de las distintas operaciones del sistema.
+
+### Pruebas realizadas
+
+Se verificaron las siguientes funcionalidades:
+
+- Registro, búsqueda, listado y eliminación de libros.
+- Registro, búsqueda y listado de socios.
+- Registro de préstamos y devoluciones.
+- Consulta de los libros prestados a un socio.
+
+Las operaciones principales fueron ejecutadas correctamente durante las pruebas iniciales realizadas en Eclipse.
+
+Posteriormente, los integrantes del grupo realizaron pruebas desde sus propias computadoras para comprobar que el proyecto pudiera descargarse y ejecutarse en diferentes entornos de desarrollo.
+
+### Resultados y observaciones
+
+Las pruebas permitieron comprobar que las funcionalidades principales del sistema funcionan, aunque también se identificaron algunos aspectos que necesitan mejoras:
+
+- El programa permite registrar libros y socios con campos vacíos.
+- Se permiten números de socio negativos.
+- El ingreso de letras en campos numéricos provoca una excepción `InputMismatchException` y puede ocasionar el cierre del programa.
+- Al intentar eliminar un libro prestado, se muestra un mensaje incorrecto indicando que el libro no existe.
+- La búsqueda de libros por título no está disponible desde el menú, a pesar de estar contemplada en los requerimientos.
+
+Uno de los integrantes no informó inconvenientes adicionales durante sus pruebas.
+
+### Estado al finalizar el día
+
+- Clase `Main` desarrollada e integrada.
+- Menú principal y submenús implementados.
+- Operaciones principales verificadas.
+- Pruebas realizadas por los integrantes en diferentes equipos.
+- Problemas y mejoras pendientes identificados.
+- La tarea «Realizar pruebas y corregir errores» permanece **En curso**.
+
+**Conclusión:** se completó la integración inicial del sistema y se realizaron pruebas funcionales tanto en el entorno de desarrollo como en otros equipos. Los resultados permitieron identificar errores de validación y una funcionalidad de búsqueda pendiente, que serán abordados en la siguiente jornada de trabajo.
