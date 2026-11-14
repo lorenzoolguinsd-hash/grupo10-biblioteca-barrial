@@ -2,6 +2,8 @@ package biblioteca;
 
 import java.util.Scanner;
 
+import java.util.List;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -15,8 +17,7 @@ public class Main {
 			System.out.println("2. Gestión de socios");
 			System.out.println("3. Gestión de préstamos");
 			System.out.println("0. Salir");
-			System.out.print("Seleccione una opción: ");
-			int opcion = scanner.nextInt();
+			int opcion = leerEntero(scanner, "Seleccione una opción: ");
 			switch (opcion) {
 
 		    	case 1:
@@ -55,23 +56,18 @@ public class Main {
 		System.out.println("3. Listar libros");
 		System.out.println("4. Eliminar libro");
 		System.out.println("0. Volver al menú principal");
-		System.out.print("Seleccione una opción: ");
-		
-		opcion = scanner.nextInt();
+		opcion = leerEntero(scanner, "Seleccione una opción: ");
 		
 		switch (opcion) {
 
 		    case 1:
 		        // Registrar libro
-		    	scanner.nextLine();
-		    	System.out.print("Ingrese el código del libro: ");
-		    	String codigo = scanner.nextLine();
+		    	String codigo = leerTextoNoVacio(scanner, "Ingrese el código del libro: ");
 
-		    	System.out.print("Ingrese el título del libro: ");
-		    	String titulo = scanner.nextLine();
+		    	String titulo = leerTextoNoVacio(scanner, "Ingrese el título del libro: ");
 
-		    	System.out.print("Ingrese el autor del libro: ");
-		    	String autor = scanner.nextLine();
+		    	String autor = leerTextoNoVacio(scanner, "Ingrese el autor del libro: ");
+		    	
 		    	Libro libro = new Libro(codigo, titulo, autor);
 		    	
 		    	if (biblioteca.registrarLibro(libro)) {
@@ -83,17 +79,48 @@ public class Main {
 	
 		    case 2:
 		        // Buscar libro
-		    	scanner.nextLine();
-		    	
-		    	System.out.print("Ingrese el código del libro: ");
-		    	String codigoBuscado = scanner.nextLine();
-		    	Libro libroEncontrado = biblioteca.buscarLibroPorCodigo(codigoBuscado);
-		    	
-		    	if (libroEncontrado != null) {
-		    	    System.out.println(libroEncontrado);
-		    	} else {
-		    	    System.out.println("Libro no encontrado.");
-		    	}
+		        System.out.println("\n===== BUSCAR LIBRO =====");
+		        System.out.println("1. Buscar por código");
+		        System.out.println("2. Buscar por título");
+
+		        int tipoBusqueda = leerEntero(scanner, "Seleccione el tipo de búsqueda: ");
+
+		        switch (tipoBusqueda) {
+
+		            case 1:
+		                // Buscar por código
+		                String codigoBuscado = leerTextoNoVacio(scanner, "Ingrese el código del libro: ");
+
+		                Libro libroEncontrado = biblioteca.buscarLibroPorCodigo(codigoBuscado);
+
+		                if (libroEncontrado != null) {
+		                    System.out.println(libroEncontrado);
+		                } else {
+		                    System.out.println("Libro no encontrado.");
+		                }
+		                break;
+
+		            case 2:
+		                // Buscar por título
+		                String tituloBuscado = leerTextoNoVacio(scanner, "Ingrese el título o parte del título: ");
+
+		                List<Libro> resultados = biblioteca.buscarLibrosPorTitulo(tituloBuscado);
+
+		                if (resultados.isEmpty()) {
+		                    System.out.println("No se encontraron libros con ese título.");
+		                } else {
+		                    System.out.println("\nLibros encontrados:");
+
+		                    for (Libro libroEncontradoTitulo : resultados) {
+		                        System.out.println(libroEncontradoTitulo);
+		                    }
+		                }
+		                break;
+
+		            default:
+		                System.out.println("Tipo de búsqueda inválido.");
+		                break;
+		        }
 		        break;
 	
 		    case 3:
@@ -102,25 +129,24 @@ public class Main {
 	
 		    case 4:
 		        // Eliminar libro
-		    	scanner.nextLine();
-
-		    	System.out.print("Ingrese el código del libro que desea eliminar: ");
-		    	String codigoEliminar = scanner.nextLine();
-		    	boolean eliminado = biblioteca.eliminarLibro(codigoEliminar);
 		    	
-		    	if (eliminado) {
-		    	    System.out.println("Libro eliminado correctamente.");
-		    	} else {
-		    	    System.out.println("No se encontró un libro con ese código.");
-		    	}
-		        break;
-	
-		    case 0:
-		        System.out.println("Volviendo al menú principal...");
-		        break;
-	
-		    default:
-		        System.out.println("Opción inválida.");
+		    	String codigoEliminar = leerTextoNoVacio(scanner, "Ingrese el código del libro que desea eliminar: ");
+
+		        Libro libroAEliminar = biblioteca.buscarLibroPorCodigo(codigoEliminar);
+
+		        if (libroAEliminar == null) {
+		            System.out.println("No se encontró un libro con ese código.");
+		        } else if (!libroAEliminar.isDisponible()) {
+		            System.out.println("No se puede eliminar el libro porque está prestado.");
+		        } else {
+		            boolean eliminado = biblioteca.eliminarLibro(codigoEliminar);
+
+		            if (eliminado) {
+		                System.out.println("Libro eliminado correctamente.");
+		            } else {
+		                System.out.println("No se pudo eliminar el libro.");
+		            }
+		        }
 		        break;
 			} 
 		} while (opcion != 0);
@@ -135,22 +161,15 @@ public class Main {
 	        System.out.println("2. Buscar socio");
 	        System.out.println("3. Listar socios");
 	        System.out.println("0. Volver al menú principal");
-	        System.out.print("Seleccione una opción: ");
-
-	        opcion = scanner.nextInt();
+	        opcion = leerEntero(scanner, "Seleccione una opción: ");
 
 	        switch (opcion) {
 	            case 1:
 	                // Registrar socio
-	            	scanner.nextLine();
 
-	            	System.out.print("Ingrese el número de socio: ");
-	            	int numeroSocio = scanner.nextInt();
-
-	            	scanner.nextLine();
-
-	            	System.out.print("Ingrese el nombre del socio: ");
-	            	String nombre = scanner.nextLine();
+	            	int numeroSocio = leerNumeroSocio(scanner, "Ingrese el número de socio: ");
+	            	
+	            	String nombre = leerTextoNoVacio(scanner, "Ingrese el nombre del socio: ");
 
 	            	Socio socio = new Socio(numeroSocio, nombre);
 
@@ -162,10 +181,8 @@ public class Main {
 	                break;
 	            case 2:
 	                // Buscar socio
-	            	scanner.nextLine();
 
-	            	System.out.print("Ingrese el número de socio: ");
-	            	int numeroSocioBuscado = scanner.nextInt();
+	            	int numeroSocioBuscado = leerNumeroSocio(scanner, "Ingrese el número de socio: ");
 
 	            	Socio socioEncontrado = biblioteca.buscarSocio(numeroSocioBuscado);
 
@@ -196,23 +213,17 @@ public class Main {
 	        System.out.println("2. Registrar devolución");
 	        System.out.println("3. Consultar préstamos de un socio");
 	        System.out.println("0. Volver al menú principal");
-	        System.out.print("Seleccione una opción: ");
-
-	        opcion = scanner.nextInt();
+	        opcion = leerEntero(scanner, "Seleccione una opción: ");
 
 	        switch (opcion) {
 	            case 1:
 	                // Registrar préstamo
-	            	scanner.nextLine();
 
-	            	System.out.print("Ingrese el número de socio: ");
-	            	int numeroSocio = scanner.nextInt();
-
-	            	scanner.nextLine();
-
-	            	System.out.print("Ingrese el código del libro: ");
-	            	String codigoLibro = scanner.nextLine();
+	            	int numeroSocio = leerNumeroSocio(scanner, "Ingrese el número de socio: ");
+	            	
+	            	String codigoLibro = leerTextoNoVacio(scanner, "Ingrese el código del libro: ");
 	            	boolean prestado = biblioteca.prestarLibro(codigoLibro, numeroSocio);
+	            	
 	            	
 	            	if (prestado) {
 	            	    System.out.println("Préstamo registrado correctamente.");
@@ -223,15 +234,10 @@ public class Main {
 	                break;
 	            case 2:
 	                // Registrar devolución
-	            	scanner.nextLine();
 
-	            	System.out.print("Ingrese el número de socio: ");
-	            	int numeroSocioDevolucion = scanner.nextInt();
-
-	            	scanner.nextLine();
-
-	            	System.out.print("Ingrese el código del libro: ");
-	            	String codigoLibroDevolucion = scanner.nextLine();
+	            	int numeroSocioDevolucion = leerNumeroSocio(scanner, "Ingrese el número de socio: ");
+	            	
+	            	String codigoLibroDevolucion = leerTextoNoVacio(scanner, "Ingrese el código del libro: ");
 
 	            	boolean devuelto = biblioteca.devolverLibro(codigoLibroDevolucion, numeroSocioDevolucion);
 
@@ -243,11 +249,8 @@ public class Main {
 	                break;
 	            case 3:
 	                // Consultar préstamos
-	            	scanner.nextLine();
 
-	            	System.out.print("Ingrese el número de socio: ");
-	            	int numeroSocioConsulta = scanner.nextInt();
-
+	            	int numeroSocioConsulta = leerNumeroSocio(scanner, "Ingrese el número de socio: ");
 	            	biblioteca.consultarPrestamos(numeroSocioConsulta);
 	                break;
 	            case 0:
@@ -259,6 +262,41 @@ public class Main {
 	        }
 
 	    } while (opcion != 0);
+	}
+	private static int leerEntero(Scanner scanner, String mensaje) {
+	    while (true) {
+	        System.out.print(mensaje);
+	        String entrada = scanner.nextLine();
+
+	        try {
+	            return Integer.parseInt(entrada.trim());
+	        } catch (NumberFormatException e) {
+	            System.out.println("Entrada inválida. Ingrese un número entero.");
+	        }
+	    }
+	}
+	private static int leerNumeroSocio(Scanner scanner, String mensaje) {
+	    while (true) {
+	        int numero = leerEntero(scanner, mensaje);
+
+	        if (numero > 0) {
+	            return numero;
+	        }
+
+	        System.out.println("El número de socio debe ser mayor que cero.");
+	    }
+	}
+	private static String leerTextoNoVacio(Scanner scanner, String mensaje) {
+	    while (true) {
+	        System.out.print(mensaje);
+	        String entrada = scanner.nextLine().trim();
+
+	        if (!entrada.isEmpty()) {
+	            return entrada;
+	        }
+
+	        System.out.println("Este campo no puede quedar vacío.");
+	    }
 	}
 
 }
