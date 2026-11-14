@@ -1,13 +1,12 @@
-# Diseño inicial del sistema
+# Diseño del sistema
 
 ## 1. Introducción
 
+El sistema de gestión de la biblioteca barrial se desarrolla utilizando Java y programación orientada a objetos.
 
-El sistema de gestión de la biblioteca barrial se desarrollará utilizando Java y programación orientada a objetos.
+El programa está organizado mediante clases que representan los elementos principales de una biblioteca: libros, socios y la administración de sus préstamos.
 
-Se propone organizar el programa mediante clases que representen los elementos principales de una biblioteca: libros, socios y préstamos.
-
-Este diseño es inicial y podrá modificarse durante la etapa de desarrollo.
+El diseño establece los atributos, métodos y relaciones entre las clases que conforman el sistema.
 
 ## 2. Clases principales
 
@@ -15,20 +14,20 @@ Este diseño es inicial y podrá modificarse durante la etapa de desarrollo.
 
 Representa cada libro registrado en la biblioteca.
 
-Atributos propuestos:
-- codigo: identificador del libro.
-- titulo: título del libro.
-- autor: autor del libro.
-- disponible: indica si el libro puede prestarse.
+Atributos:
+- `codigo`: identificador del libro.
+- `titulo`: título del libro.
+- `autor`: autor del libro.
+- `disponible`: indica si el libro puede prestarse.
 
 ### Clase Socio
 
 Representa a una persona registrada en la biblioteca.
 
-Atributos propuestos:
-- numeroSocio: identificador del socio.
-- nombre: nombre del socio.
-- librosPrestados: lista de libros que tiene actualmente en préstamo.
+Atributos:
+- `numeroSocio`: identificador del socio.
+- `nombre`: nombre del socio.
+- `librosPrestados`: lista de libros que tiene actualmente en préstamo.
 
 ### Clase Biblioteca
 
@@ -37,39 +36,60 @@ Se encarga de administrar los libros y los socios.
 Responsabilidades:
 - Registrar y eliminar libros.
 - Buscar y listar libros.
-- Registrar buscar y listar socios.
+- Registrar, buscar y listar socios.
 - Gestionar préstamos y devoluciones.
+- Consultar los préstamos asociados a cada socio.
 
-Atributos propuestos:
-- libros: lista de libros registrados.
-- socios: lista de socios registrados.
+Atributos:
+- `libros`: lista de libros registrados.
+- `socios`: lista de socios registrados.
+
+### Clase Main
+
+Contiene el método principal de ejecución del programa y administra la interacción con el usuario mediante un menú de consola.
+
+Responsabilidades:
+- Mostrar el menú principal y los submenús.
+- Solicitar los datos necesarios para cada operación.
+- Validar las entradas del usuario.
+- Invocar los métodos correspondientes de la clase `Biblioteca`.
+- Mostrar los resultados de las operaciones.
 
 ## 3. Estructuras de datos
 
-Se utilizará `List` y `ArrayList` para almacenar los libros y socios.
+Se utiliza `List` y `ArrayList` para almacenar los libros y socios.
 
-Además, cada socio tendrá una lista de libros prestados. De esta manera, se trabajará con listas que contienen otras listas, cumpliendo con el requisito de colección de colecciones.
+Además, cada socio tiene una lista de libros prestados. De esta manera, se trabaja con listas que contienen otras listas, cumpliendo con el requisito de colección de colecciones.
 
 ## 4. Relaciones entre las clases
 
 - Una biblioteca administra varios libros.
 - Una biblioteca registra varios socios.
 - Un socio puede tener varios libros prestados.
-- Un libro solo podrá estar prestado a un socio a la vez.
+- Un libro solo puede estar prestado a un socio a la vez.
+- La clase `Main` utiliza la clase `Biblioteca` para ejecutar las operaciones del sistema.
 
 ## 5. Funcionamiento general
 
-El usuario interactuará con el sistema mediante un menú de consola.
+El usuario interactúa con el sistema mediante un menú de consola.
 
-Desde ese menú podrá seleccionar las operaciones disponibles para administrar libros, socios y préstamos.
+Desde el menú principal puede seleccionar las operaciones disponibles para administrar libros, socios y préstamos.
+
+El sistema permite registrar, buscar, listar y eliminar libros; registrar, buscar y listar socios; registrar préstamos, realizar devoluciones y consultar los libros prestados por cada socio.
+
+La búsqueda de libros puede realizarse mediante el código exacto o por el título completo o parcial, sin distinguir entre mayúsculas y minúsculas.
 
 ## 6. Consideraciones
 
-Este diseño representa una propuesta inicial. Los atributos, métodos y relaciones definitivos se establecerán durante el desarrollo del proyecto.
+- Los atributos de las clases se mantienen privados para proteger los datos.
+- Las operaciones de administración se centralizan en la clase `Biblioteca`.
+- La clase `Main` se encarga de la interacción con el usuario y de las validaciones de entrada.
+- La información se almacena temporalmente en memoria y se pierde al finalizar la ejecución del programa.
+- El diseño podrá ampliarse en futuras etapas si se incorporan nuevas funcionalidades.
 
 ## Diseño del menú de consola (Lorenzo Olguin)
 
-El sistema contará con una interfaz de consola organizada en tres secciones principales: gestión de libros, gestión de socios y gestión de préstamos.
+El sistema cuenta con una interfaz de consola organizada en tres secciones principales: gestión de libros, gestión de socios y gestión de préstamos.
 
 ### Menú principal
 
@@ -85,6 +105,8 @@ El sistema contará con una interfaz de consola organizada en tres secciones pri
 3. Listar libros
 4. Eliminar libro
 0. Volver al menú principal
+
+La opción de búsqueda permite seleccionar entre buscar por código o por título.
 
 ### Gestión de socios
 
@@ -102,13 +124,11 @@ El sistema contará con una interfaz de consola organizada en tres secciones pri
 
 ### Funcionamiento del menú
 
-- Cada sección tendrá una opción para regresar al menú principal.
-- Después de realizar una operación, el sistema mostrará un mensaje indicando si se realizó correctamente o si ocurrió algún error.
-- Una vez mostrado el resultado, el sistema volverá al submenú correspondiente.
-- Si el usuario ingresa una opción no válida, se mostrará un mensaje de error y se volverá a presentar el menú correspondiente.
-- La opción «Salir» finalizará la ejecución del programa.
-
-
+- Cada sección tiene una opción para regresar al menú principal.
+- Después de realizar una operación, el sistema muestra un mensaje indicando si se realizó correctamente o si ocurrió algún error.
+- Una vez mostrado el resultado, el sistema vuelve al submenú correspondiente.
+- Si el usuario ingresa una opción no válida, se muestra un mensaje de error y se vuelve a presentar el menú correspondiente.
+- La opción «Salir» finaliza la ejecución del programa.
 
 ## Definición de métodos y responsabilidades (Ramiro Peralta)
 
@@ -155,14 +175,14 @@ Representa a una persona registrada y mantiene la lista de libros que tiene actu
 - `getLibrosPrestados(): List<Libro>`
   - Devuelve una copia de la lista de libros que el socio tiene actualmente prestados, evitando que otras clases puedan modificar directamente su lista interna.
 
-- `agregarLibroPrestado(Libro libro): boolean`
-  - Agrega el libro a la lista del socio si todavía no figura en ella. Devuelve `true` si se agregó y `false` si ya estaba registrado.
+- `agregarLibroPrestado(Libro libro): void`
+  - Agrega el libro a la lista de préstamos del socio.
 
-- `quitarLibroPrestado(Libro libro): boolean`
-  - Retira el libro de la lista del socio. Devuelve `true` si se quitó y `false` si no figuraba en ella.
+- `quitarLibroPrestado(Libro libro): void`
+  - Retira el libro de la lista de préstamos del socio.
 
 - `toString(): String`
-  - Devuelve una representación textual del socio con su número identificador y nombre.
+  - Devuelve una representación textual del socio con su número identificador, nombre y cantidad de libros prestados.
 
 ### Clase Biblioteca
 
@@ -184,7 +204,7 @@ Administra el catálogo y los socios. Coordina las operaciones y verifica las re
   - Devuelve una lista con los libros cuyos títulos contienen el texto buscado, sin distinguir entre mayúsculas y minúsculas. Si no hay coincidencias, devuelve una lista vacía.
 
 - `listarLibros(): void`
-  - Muestra en consola todos los libros del catálogo con sus datos y disponibilidad. Si el catálogo está vacío, informa que no hay libros registrados.
+  - Muestra en consola los libros del catálogo con sus datos y disponibilidad. Si no hay libros registrados, no muestra un mensaje específico.
 
 - `registrarSocio(Socio socio): boolean`
   - Verifica que no exista otro socio con el mismo número. Si no está registrado, lo incorpora y devuelve `true`. Si el número está repetido, devuelve `false`.
@@ -193,7 +213,7 @@ Administra el catálogo y los socios. Coordina las operaciones y verifica las re
   - Devuelve el socio cuyo número coincide con el indicado. Si no existe, devuelve `null`.
 
 - `listarSocios(): void`
-  - Muestra en consola los datos de todos los socios registrados. Si la lista está vacía, informa que no hay socios registrados.
+  - Muestra en consola los datos de los socios registrados. Si no hay socios registrados, no muestra un mensaje específico.
 
 - `prestarLibro(String codigo, int numeroSocio): boolean`
   - Verifica que el libro exista, que el socio esté registrado y que el libro esté disponible. Si se cumplen las condiciones, agrega el libro a la lista de préstamos del socio y establece su disponibilidad en `false`. Devuelve `true` si se registró el préstamo. Si alguna condición falla, devuelve `false` sin modificar los datos.
@@ -204,56 +224,43 @@ Administra el catálogo y los socios. Coordina las operaciones y verifica las re
 - `consultarPrestamos(int numeroSocio): void`
   - Busca al socio y muestra los libros que tiene prestados. Si no existe, informa que el socio no está registrado. Si su lista está vacía, informa que no tiene préstamos.
 
----
-
-### RELACIÓN ENTRE CLASES (Nestor Oviedo)
+## RELACIÓN ENTRE CLASES (Nestor Oviedo)
 
 El diseño del sistema se fundamenta en los principios de la Programación Orientada a Objetos (POO), utilizando relaciones de asociación y dependencia entre clases, basadas en la interacción y administración de objetos.
 
----
+### 1. Relación `Biblioteca` → `Libro` (Asociación 1 a N)
 
-### 1. Relación `Biblioteca` ➔ `Libro` (Asociación 1 a N)
+- **Tipo de relación:** Asociación.
+- **Descripción:** La clase `Biblioteca` mantiene como atributo una lista `List<Libro> libros` para gestionar el catálogo completo de ejemplares.
+- **Multiplicidad:** Una `Biblioteca` puede administrar cero o muchos objetos `Libro`.
+- **Justificación:** Representa la premisa «La biblioteca administra un catálogo de libros». `Biblioteca` controla el alta, la baja, la búsqueda y la disponibilidad de los objetos de tipo `Libro`.
 
-- **Tipo de relación**: Asociación.
-- **Descripción**: La clase `Biblioteca` actúa como administrador principal del sistema y posee como atributo una lista `List<Libro> libros` para gestionar el catálogo completo de ejemplares.
-- **Multiplicidad**: Una `Biblioteca` puede administrar cero o muchos objetos `Libro`.
-- **Justificación**: Representa la premisa *"La biblioteca administra un catálogo de libros"*. `Biblioteca` controla el alta, la baja, la búsqueda y la disponibilidad de los objetos de tipo `Libro`.
+### 2. Relación `Biblioteca` → `Socio` (Asociación 1 a N)
 
----
+- **Tipo de relación:** Asociación.
+- **Descripción:** La clase `Biblioteca` mantiene el registro general de usuarios a través del atributo `List<Socio> socios`.
+- **Multiplicidad:** Una `Biblioteca` puede registrar cero o muchos objetos `Socio`.
+- **Justificación:** Responde a la premisa «La biblioteca tiene socios registrados». `Biblioteca` coordina las operaciones globales de préstamos y devoluciones, validando los datos de los socios.
 
-### 2. Relación `Biblioteca` ➔ `Socio` (Asociación 1 a N)
+### 3. Relación `Socio` → `Libro` (Asociación mediante colección de colecciones)
 
-- **Tipo de relación**: Asociación.
-- **Descripción**: La clase `Biblioteca` mantiene el registro general de usuarios a través del atributo `List<Socio> socios`.
-- **Multiplicidad**: Una `Biblioteca` puede registrar cero o muchos objetos `Socio`.
-- **Justificación**: Responde a la premisa *"La biblioteca tiene socios registrados"*. `Biblioteca` coordina las operaciones globales de préstamos y devoluciones, validando los datos de los socios.
+- **Tipo de relación:** Asociación.
+- **Descripción:** Cada objeto de la clase `Socio` mantiene su propia lista privada `List<Libro> librosPrestados`. Al almacenarse los socios dentro de la lista general de la biblioteca, se constituye la colección de colecciones del sistema.
+- **Multiplicidad:** Un `Socio` puede tener cero o muchos libros prestados. Cada `Libro` puede estar prestado a cero o un solo socio a la vez.
+- **Protección de datos:** El método `getLibrosPrestados()` retorna una copia defensiva de la lista, mientras que `agregarLibroPrestado()` y `quitarLibroPrestado()` gestionan la asignación y devolución de ejemplares.
 
----
+### 4. Relación `Main` → `Biblioteca` (Dependencia de uso y orquestación)
 
-### 3. Relación `Socio` ➔ `Libro` (Asociación mediante colección de colecciones)
+- **Tipo de relación:** Dependencia.
+- **Descripción:** La clase `Main` instancia un objeto `Biblioteca` y administra la interfaz del menú de consola, delegando en dicha clase la lógica de las operaciones.
+- **Justificación:** `Main` se encarga de la interacción con el usuario, solicita los datos y muestra los resultados, mientras que `Biblioteca` administra las operaciones del sistema.
 
-- **Tipo de relación**: Asociación.
-- **Descripción**: Cada objeto de la clase `Socio` mantiene su propia lista privada `List<Libro> librosPrestados`. Al almacenarse los socios dentro de la lista general de la biblioteca, se constituye la **colección de colecciones** del sistema.
-- **Multiplicidad**: Un `Socio` puede tener cero o muchos libros prestados. Cada `Libro` puede estar prestado a cero o un solo socio a la vez.
-- **Protección de datos**: Para evitar modificaciones no autorizadas desde clases externas, el método `getLibrosPrestados()` retorna una copia defensiva de la lista, mientras que `agregarLibroPrestado()` y `quitarLibroPrestado()` gestionan la asignación y devolución de ejemplares.
-
----
-
-### 4. Relación `Main` ➔ `Biblioteca` (Dependencia de uso y orquestación)
-
-- **Tipo de relación**: Dependencia.
-- **Descripción**: La clase `Main` (que contiene el método de entrada `main`) instancia un objeto `Biblioteca` y orquesta la interfaz del menú de consola, delegando en dicha clase la lógica de negocio.
-- **Justificación**: `Main` se encarga de la interacción con el usuario, solicita los datos y muestra los resultados, mientras que `Biblioteca` administra las operaciones y validaciones del sistema.
-
----
-
-### CRITERIOS PARA EL DIAGRAMA UML
+## CRITERIOS PARA EL DIAGRAMA UML
 
 - Las relaciones entre `Biblioteca`, `Libro` y `Socio` se representan mediante líneas de asociación.
 - La relación entre `Main` y `Biblioteca` se representa mediante una línea discontinua con una flecha hacia `Biblioteca`, indicando una dependencia.
 - Las multiplicidades deben reflejar la cantidad de objetos que pueden participar en cada relación.
 - La colección de colecciones se representa mediante la lista de socios de `Biblioteca` y la lista de libros prestados de cada `Socio`.
-
 
 ## Diagrama de clases UML (Francisco Olivera)
 
@@ -263,6 +270,9 @@ El siguiente diagrama representa la estructura del sistema Biblioteca Barrial, i
 classDiagram
     class Main {
         +main(String[] args) void
+        -leerEntero(Scanner scanner, String mensaje) int
+        -leerNumeroSocio(Scanner scanner, String mensaje) int
+        -leerTextoNoVacio(Scanner scanner, String mensaje) String
     }
 
     class Biblioteca {
@@ -304,8 +314,8 @@ classDiagram
         +getNumeroSocio() int
         +getNombre() String
         +getLibrosPrestados() List~Libro~
-        +agregarLibroPrestado(Libro libro) boolean
-        +quitarLibroPrestado(Libro libro) boolean
+        +agregarLibroPrestado(Libro libro) void
+        +quitarLibroPrestado(Libro libro) void
         +toString() String
     }
 
@@ -317,9 +327,9 @@ classDiagram
 
 ### Consideraciones
 
-
 - Los atributos son privados y se representan con el signo `-`.
 - Los métodos y constructores son públicos y se representan con el signo `+`.
+- Los métodos auxiliares de `Main` son privados y se representan con el signo `-`.
 - Las asociaciones muestran cómo se relacionan las clases dentro del sistema.
 - La dependencia entre `Main` y `Biblioteca` representa el uso de sus funcionalidades desde el menú de consola.
 - La relación entre `Socio` y `Libro` representa la colección de colecciones utilizada para administrar los préstamos.
