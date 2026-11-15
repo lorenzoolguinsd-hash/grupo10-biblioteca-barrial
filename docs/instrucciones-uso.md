@@ -8,30 +8,36 @@ Al ejecutar el programa se muestra el menú principal, desde donde se puede acce
 
 Desde este menú se pueden realizar las siguientes operaciones:
 
-- **Registrar libro:** ingresar el código, título y autor.
+- **Registrar libro:** ingresar el título, el autor y la cantidad de ejemplares que se desean registrar. El sistema genera automáticamente un código único para cada ejemplar.
 - **Buscar libro:** permite seleccionar entre buscar por código o por título.
-  - **Por código:** ingresar el código exacto del libro que se desea consultar.
-  - **Por título:** ingresar el título completo o una parte del mismo. La búsqueda no distingue entre mayúsculas y minúsculas y puede devolver varios resultados.
-- **Listar libros:** mostrar todos los libros registrados.
-- **Eliminar libro:** ingresar el código del libro que se desea eliminar. No se permite eliminar un libro que se encuentre prestado.
+  - **Por código:** ingresar el código exacto del ejemplar que se desea consultar. Se muestra su información individual y disponibilidad.
+  - **Por título:** ingresar el título completo o una parte del mismo. La búsqueda no distingue entre mayúsculas y minúsculas. Los resultados se muestran agrupados por título y autor, indicando la cantidad total de ejemplares, disponibles y prestados.
+- **Listar libros:** muestra el catálogo agrupado por título y autor, indicando la cantidad total de ejemplares, disponibles y prestados.
+- **Eliminar libro:** ingresar el código del ejemplar que se desea eliminar. No se permite eliminar un ejemplar que se encuentre prestado.
 
 ### Formato de los códigos
 
-Los códigos de los libros deben respetar el siguiente formato:
+Los códigos de los ejemplares se generan automáticamente siguiendo estas reglas:
 
-- **Títulos que comienzan con una letra:** se utiliza la inicial del título en mayúscula, seguida de cuatro dígitos. Ejemplo: `E0001`.
-- **Títulos que comienzan con un número o símbolo:** se utiliza el prefijo `NN`, seguido de cuatro dígitos. Ejemplo: `NN0002`.
-- La numeración es única y correlativa para todos los libros, independientemente del prefijo.
+- **Títulos que comienzan con una letra:** se utiliza la inicial del título en mayúscula, seguida de cuatro dígitos.
+- **Títulos que comienzan con una letra acentuada:** se utiliza la letra base sin acento. Por ejemplo, Á se convierte en A.
+- **Títulos que comienzan con Ñ:** se utiliza la letra N.
+- **Títulos que comienzan con un número o símbolo:** se utiliza el prefijo `NN`, seguido de cuatro dígitos.
+- Cada prefijo tiene su propia numeración correlativa e independiente.
 - No se permiten códigos duplicados.
+- Cada ejemplar tiene un código propio, aunque comparta título y autor con otros ejemplares.
 
 Ejemplos:
 
 | Título | Código |
 |---|---|
 | El principito | E0001 |
-| Cien años de soledad | C0002 |
-| 1984 | NN0003 |
-| 2001: Odisea del espacio | NN0004 |
+| El principito | E0002 |
+| Cien años de soledad | C0001 |
+| 1984 | NN0001 |
+| 2001: Odisea del espacio | NN0002 |
+
+La numeración se mantiene durante la ejecución del programa. Al reiniciarlo, los contadores vuelven a comenzar porque la información se almacena en memoria.
 
 ## 3. Gestión de socios
 
