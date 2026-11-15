@@ -206,3 +206,49 @@ Uno de los integrantes no informó inconvenientes adicionales durante sus prueba
 - La tarea «Realizar pruebas y corregir errores» permanece **En curso**.
 
 **Conclusión:** se completó la integración inicial del sistema y se realizaron pruebas funcionales tanto en el entorno de desarrollo como en otros equipos. Los resultados permitieron identificar errores de validación y una funcionalidad de búsqueda pendiente, que serán abordados en la siguiente jornada de trabajo.
+
+
+## Día 6 – Corrección de errores y validación del sistema
+
+**Fecha:** 14/11/2026
+
+### Actividades realizadas
+
+Durante esta jornada se trabajó sobre los problemas identificados en las pruebas realizadas al finalizar el Día 5.
+
+Se incorporaron validaciones de entrada en la clase `Main`, evitando que el programa se cierre cuando se ingresan letras en campos numéricos y rechazando los campos de texto vacíos.
+
+También se corrigió el comportamiento al intentar eliminar libros prestados, permitiendo mostrar un mensaje específico en lugar de indicar incorrectamente que el libro no existe.
+
+Además, se incorporó la búsqueda de libros por título desde el menú de gestión de libros, permitiendo realizar búsquedas parciales y sin distinguir entre mayúsculas y minúsculas.
+
+Se actualizaron los documentos `diseño.md` e `instrucciones-uso.md` para reflejar los cambios realizados en el sistema.
+
+### Pruebas realizadas
+
+Se realizaron pruebas de las validaciones incorporadas y se solicitó a los integrantes del grupo que descargaran y ejecutaran el proyecto desde sus propios equipos.
+
+Ramiro informó que, durante sus pruebas, no aparecieron otras fallas generales, aunque identificó dos detalles pendientes:
+
+- El programa todavía acepta códigos de libros que no respetan el formato establecido, como `abc`.
+- Al ingresar una opción inexistente en el menú de gestión de libros, el programa vuelve al menú sin mostrar el mensaje «Opción inválida».
+
+### Resultados y observaciones
+
+Las correcciones realizadas permitieron mejorar la validación de datos, el manejo de errores y las opciones de búsqueda del sistema.
+
+Los dos detalles señalados por Ramiro quedaron registrados para ser corregidos durante el Día 7. La validación del formato de los códigos ya estaba prevista para esa jornada, mientras que también se incorporará el aviso correspondiente para las opciones inválidas.
+
+No se informaron otras fallas durante las pruebas recibidas.
+
+### Estado al finalizar el día
+
+- Validaciones de entrada incorporadas.
+- Mensaje de eliminación de libros prestados corregido.
+- Búsqueda de libros por título incorporada al menú.
+- Documentación del proyecto actualizada.
+- Pruebas realizadas por los integrantes.
+- Dos detalles pendientes de corrección para el Día 7.
+- La tarea «Realizar pruebas y corregir errores» permanece **En curso**.
+
+**Conclusión:** durante esta jornada se corrigieron los principales problemas detectados en las pruebas anteriores y se mejoró el funcionamiento general del sistema. Las pruebas realizadas permitieron identificar dos últimos detalles que serán abordados durante la jornada final, junto con las verificaciones y preparativos para la entrega y defensa del proyecto.
