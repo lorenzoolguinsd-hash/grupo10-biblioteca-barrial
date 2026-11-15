@@ -252,3 +252,53 @@ No se informaron otras fallas durante las pruebas recibidas.
 - La tarea «Realizar pruebas y corregir errores» permanece **En curso**.
 
 **Conclusión:** durante esta jornada se corrigieron los principales problemas detectados en las pruebas anteriores y se mejoró el funcionamiento general del sistema. Las pruebas realizadas permitieron identificar dos últimos detalles que serán abordados durante la jornada final, junto con las verificaciones y preparativos para la entrega y defensa del proyecto.
+
+
+## Día 7 – Finalización del desarrollo y validación del sistema
+
+**Fecha:** 15/11/2026
+
+### Actividades realizadas
+
+Durante esta jornada se completaron las últimas mejoras funcionales del sistema y se realizaron las verificaciones finales de las operaciones implementadas.
+
+Se incorporó la generación automática de códigos para los ejemplares de libros. Cada copia recibe un identificador único compuesto por una letra inicial y cuatro dígitos correlativos. También se contempló la normalización de letras acentuadas, la letra Ñ y los títulos que comienzan con números o símbolos.
+
+Se implementó el registro de múltiples ejemplares de un mismo libro, permitiendo indicar la cantidad deseada y generar un código diferente para cada copia.
+
+Además, se modificó la presentación del catálogo para agrupar los ejemplares que comparten título y autor, mostrando las cantidades totales, disponibles y prestadas. Esta presentación se incorporó tanto al listado general como a la búsqueda por título, manteniendo la consulta individual mediante código.
+
+Por último, se corrigió el comportamiento del menú de gestión de libros para que, al ingresar una opción inexistente, se muestre el mensaje «Opción inválida» y vuelva a presentarse el submenú correspondiente.
+
+Se actualizaron los documentos de requerimientos, diseño, historias de usuario e instrucciones de uso para reflejar las funcionalidades incorporadas.
+
+También se organizó la documentación de las pruebas y se incorporaron capturas de pantalla del funcionamiento del programa en la carpeta `kanban/funcionamiento`.
+
+### Pruebas realizadas
+
+Se verificaron las funcionalidades incorporadas y las operaciones generales del sistema.
+
+Se comprobaron especialmente:
+
+- La generación automática y correlativa de códigos.
+- El registro de múltiples ejemplares.
+- La búsqueda de libros por título y por código.
+- La visualización agrupada del catálogo y sus cantidades.
+- El comportamiento ante opciones inexistentes en el menú.
+- Las operaciones de registro, búsqueda y listado de socios.
+- El registro de préstamos, devoluciones y consulta de préstamos.
+
+Se completaron 17 casos de prueba, cuyos resultados fueron verificados durante el desarrollo.
+
+### Estado al finalizar el día
+
+- Funcionalidades principales del sistema implementadas.
+- Generación automática de códigos incorporada.
+- Registro de múltiples ejemplares implementado.
+- Catálogo agrupado por título y autor.
+- Validación de opciones del menú corregida.
+- Documentación funcional y técnica actualizada.
+- 17 casos de prueba verificados.
+- Capturas del funcionamiento incorporadas a `kanban/funcionamiento`.
+
+**Conclusión:** se completó el desarrollo de las funcionalidades previstas para el sistema de biblioteca barrial y se verificó su comportamiento mediante pruebas funcionales. Se dejaron organizadas las evidencias y la documentación para preparar la entrega final del proyecto.
