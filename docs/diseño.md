@@ -34,8 +34,10 @@ Atributos:
 Se encarga de administrar los libros y los socios.
 
 Responsabilidades:
+- Generar automáticamente códigos únicos para los ejemplares.
 - Registrar y eliminar libros.
-- Buscar y listar libros.
+- Buscar libros por código o título.
+- Mostrar los libros agrupados por título y autor, indicando las cantidades totales, disponibles y prestadas.
 - Registrar, buscar y listar socios.
 - Gestionar préstamos y devoluciones.
 - Consultar los préstamos asociados a cada socio.
@@ -43,6 +45,7 @@ Responsabilidades:
 Atributos:
 - `libros`: lista de libros registrados.
 - `socios`: lista de socios registrados.
+- `contadoresCodigos`: arreglo de enteros que almacena la numeración utilizada para generar códigos automáticamente según el prefijo correspondiente.
 
 ### Clase Main
 
@@ -191,6 +194,12 @@ Administra el catálogo y los socios. Coordina las operaciones y verifica las re
 - `Biblioteca()`
   - Constructor. Inicializa `libros` y `socios` como listas vacías de tipo `ArrayList<Libro>` y `ArrayList<Socio>`.
 
+  - `generarCodigoLibro(String titulo): String`
+  - Genera automáticamente un código para un ejemplar según la primera letra del título. Normaliza las letras acentuadas, utiliza el prefijo `NN` cuando el título comienza con un número o símbolo y mantiene un contador independiente para cada prefijo. Devuelve `null` cuando se alcanza el límite de códigos disponibles para ese prefijo.
+
+- `mostrarLibrosAgrupados(List<Libro> resultados): void`
+  - Muestra los libros agrupados por título y autor. Para cada grupo informa la cantidad total de ejemplares, cuántos están disponibles y cuántos están prestados.
+
 - `registrarLibro(Libro libro): boolean`
   - Verifica que no exista otro libro con el mismo código. Si el código no está registrado, incorpora el libro al catálogo y devuelve `true`. Si está repetido, devuelve `false` sin modificar el catálogo.
 
@@ -204,8 +213,8 @@ Administra el catálogo y los socios. Coordina las operaciones y verifica las re
   - Devuelve una lista con los libros cuyos títulos contienen el texto buscado, sin distinguir entre mayúsculas y minúsculas. Si no hay coincidencias, devuelve una lista vacía.
 
 - `listarLibros(): void`
-  - Muestra en consola los libros del catálogo con sus datos y disponibilidad. Si no hay libros registrados, no muestra un mensaje específico.
-
+  - Muestra el catálogo de libros agrupado por título y autor, indicando la cantidad total de ejemplares, disponibles y prestados.
+    
 - `registrarSocio(Socio socio): boolean`
   - Verifica que no exista otro socio con el mismo número. Si no está registrado, lo incorpora y devuelve `true`. Si el número está repetido, devuelve `false`.
 
@@ -278,6 +287,7 @@ classDiagram
     class Biblioteca {
         -List~Libro~ libros
         -List~Socio~ socios
+        -int[] contadoresCodigos
         +Biblioteca()
         +registrarLibro(Libro libro) boolean
         +eliminarLibro(String codigo) boolean
@@ -290,6 +300,8 @@ classDiagram
         +prestarLibro(String codigo, int numeroSocio) boolean
         +devolverLibro(String codigo, int numeroSocio) boolean
         +consultarPrestamos(int numeroSocio) void
+        +generarCodigoLibro(String titulo) String
+        +mostrarLibrosAgrupados(List~Libro~ resultados) void
     }
 
     class Libro {
