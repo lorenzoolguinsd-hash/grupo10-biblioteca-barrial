@@ -21,14 +21,13 @@ Desarrollar un programa en Java que permita administrar un catálogo de libros, 
 
 ## Funcionalidades principales
 
-- Registrar libros.
-- Eliminar libros del catálogo.
-- Buscar libros.
-- Mostrar todos los libros registrados.
-- Registrar socios.
-- Buscar y consultar socios.
-- Registrar préstamos de libros.
-- Registrar devoluciones.
+- Registrar libros indicando la cantidad de ejemplares.
+- Generar automáticamente códigos únicos para cada ejemplar.
+- Buscar libros por título o código identificador.
+- Mostrar el catálogo agrupado por título y autor, indicando ejemplares totales, disponibles y prestados.
+- Eliminar ejemplares disponibles mediante su código.
+- Registrar y consultar socios.
+- Gestionar préstamos y devoluciones.
 - Consultar los libros prestados por cada socio.
 
 ## Estructuras de datos
