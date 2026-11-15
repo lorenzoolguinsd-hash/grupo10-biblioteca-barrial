@@ -37,7 +37,7 @@ Además, se implementa una colección de colecciones mediante la lista de libros
 - **Eclipse IDE:** entorno de desarrollo.
 - **Git:** control de versiones.
 - **GitHub:** alojamiento del repositorio y documentación del proyecto.
-- **Trello:** organización y seguimiento de las tareas mediante un tablero Kanban.
+- **Trello:** organización y seguimiento de las tareas mediante un tablero Kanban. [Ver tablero del Grupo 10](https://trello.com/b/i5q64HUH/grupo-10-biblioteca-barrial).
 
 ## 6. Funcionalidades principales
 
