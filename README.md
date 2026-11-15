@@ -107,7 +107,7 @@ El repositorio contiene los siguientes documentos complementarios:
 - `docs/historias-de-usuario.md`: historias de usuario del proyecto.
 - `docs/diseño.md`: diseño de clases, métodos, relaciones y diagrama UML.
 - `docs/instrucciones-uso.md`: explicación detallada del funcionamiento del programa.
-- `pruebas/casos-de-prueba.md`: registro de los casos de prueba realizados.
+- `Pruebas/casos-de-prueba.md`: registro de los 17 casos de prueba realizados.
 - `bitacora.md`: registro de las actividades desarrolladas durante cada jornada.
 
 ## 10. Pruebas realizadas
@@ -118,39 +118,57 @@ Se verificaron las operaciones de registro, búsqueda, listado y eliminación de
 
 También se probaron las validaciones de entrada, la generación automática de códigos, el registro de múltiples ejemplares y la visualización agrupada del catálogo.
 
-Se documentaron **17 casos de prueba**, todos confirmados como aprobados.
+Se documentaron **17 casos de prueba**, todos aprobados.
 
-El detalle de las pruebas se encuentra en `pruebas/casos-de-prueba.md`.
+El detalle de las pruebas se encuentra en [`Pruebas/casos-de-prueba.md`](Pruebas/casos-de-prueba.md).
 
 ## 11. Capturas de pantalla
 
 A continuación se presentan capturas del funcionamiento del sistema, que muestran las principales operaciones implementadas.
 
-Menú principal
+### Menú principal
 
-Gestión de libros
+![Menú principal](<kanban/funcionamiento/menú principal.png>)
 
-Registro de varios ejemplares y generación automática de códigos:
+### Gestión de libros
 
-Búsqueda de libros por título y agrupamiento:
+**Registro de varios ejemplares y generación automática de códigos:**
 
-Búsqueda individual por código:
+![Registro de varios ejemplares](<kanban/funcionamiento/Registro de varios ejemplares y sus códigos automáticos.png>)
 
-Listado del catálogo con cantidades disponibles y prestadas:
+**Búsqueda de libros por título y agrupamiento:**
 
-Gestión de socios
+![Búsqueda por título](<kanban/funcionamiento/Búsqueda de libros por título, mostrando el agrupamiento.png>)
 
-Registro y listado de socios:
+**Búsqueda individual por código:**
 
-Gestión de préstamos
+![Búsqueda por código](<kanban/funcionamiento/Búsqueda individual por código.png>)
 
-Registro de un préstamo:
+**Listado del catálogo con cantidades disponibles y prestadas:**
 
-Devolución de un libro:
+![Listado del catálogo](<kanban/funcionamiento/Listado del catálogo con cantidades disponibles y prestadas.png>)
 
-Consulta de préstamos de un socio y salida del sistema:
+### Gestión de socios
 
-Las capturas de seguimiento del trabajo y del tablero Kanban se encuentran en la carpeta kanban del repositorio.
+**Registro y listado de socios:**
+
+![Registro y listado de socios](<kanban/funcionamiento/Registro y listado de socios.png>)
+
+### Gestión de préstamos
+
+**Registro de un préstamo:**
+
+![Registro de préstamo](<kanban/funcionamiento/Registro de un préstamo.png>)
+
+**Devolución de un libro:**
+
+![Devolución de un libro](<kanban/funcionamiento/Devolución de un libro.png>)
+
+**Consulta de préstamos de un socio y salida del sistema:**
+
+![Consulta de préstamos](<kanban/funcionamiento/Consulta de préstamos de un socio y salida del sistema.png>)
+
+Las capturas del seguimiento del trabajo y del tablero Kanban se encuentran en la carpeta `kanban` del repositorio.
 
 ## 12. Conclusiones
 
