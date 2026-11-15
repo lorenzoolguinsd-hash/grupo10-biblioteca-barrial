@@ -124,16 +124,33 @@ El detalle de las pruebas se encuentra en `pruebas/casos-de-prueba.md`.
 
 ## 11. Capturas de pantalla
 
-En esta sección se incorporarán capturas del funcionamiento del programa, mostrando:
+A continuación se presentan capturas del funcionamiento del sistema, que muestran las principales operaciones implementadas.
 
-- Menú principal.
-- Gestión y registro de libros.
-- Búsqueda y listado de libros.
-- Gestión de socios.
-- Registro de préstamos y devoluciones.
-- Consulta de préstamos de un socio.
+Menú principal
 
-Las capturas de seguimiento del trabajo y del tablero Kanban se encuentran en la carpeta `kanban` del repositorio.
+Gestión de libros
+
+Registro de varios ejemplares y generación automática de códigos:
+
+Búsqueda de libros por título y agrupamiento:
+
+Búsqueda individual por código:
+
+Listado del catálogo con cantidades disponibles y prestadas:
+
+Gestión de socios
+
+Registro y listado de socios:
+
+Gestión de préstamos
+
+Registro de un préstamo:
+
+Devolución de un libro:
+
+Consulta de préstamos de un socio y salida del sistema:
+
+Las capturas de seguimiento del trabajo y del tablero Kanban se encuentran en la carpeta kanban del repositorio.
 
 ## 12. Conclusiones
 
