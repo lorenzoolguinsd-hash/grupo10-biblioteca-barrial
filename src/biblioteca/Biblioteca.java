@@ -8,11 +8,47 @@ public class Biblioteca {
 	//atributos
 	private List<Libro> libros;
 	private List<Socio> socios;
+	private int[] contadoresCodigos = new int[27];
 	
 	//constructor
 	public Biblioteca() {
 		this.libros = new ArrayList<Libro>();
 		this.socios = new ArrayList<Socio>();
+	}
+	public String generarCodigoLibro(String titulo) {
+	    String prefijo;
+	    int posicion;
+
+	    char inicial = Character.toUpperCase(titulo.charAt(0));
+	    
+	    if (inicial == 'Á' || inicial == 'À' || inicial == 'Ä') {
+	        inicial = 'A';
+	    } else if (inicial == 'É' || inicial == 'È' || inicial == 'Ë') {
+	        inicial = 'E';
+	    } else if (inicial == 'Í' || inicial == 'Ì' || inicial == 'Ï') {
+	        inicial = 'I';
+	    } else if (inicial == 'Ó' || inicial == 'Ò' || inicial == 'Ö') {
+	        inicial = 'O';
+	    } else if (inicial == 'Ú' || inicial == 'Ù' || inicial == 'Ü') {
+	        inicial = 'U';
+	    } else if (inicial == 'Ñ') {
+	        inicial = 'N';
+	    }
+
+	    if (inicial >= 'A' && inicial <= 'Z') {
+	        prefijo = String.valueOf(inicial);
+	        posicion = inicial - 'A';
+	    } else {
+	        prefijo = "NN";
+	        posicion = 26;
+	    }
+	    
+	    if (contadoresCodigos[posicion] >= 9999) {
+	        return null;
+	    }
+	    contadoresCodigos[posicion]++;
+
+	    return prefijo + String.format("%04d", contadoresCodigos[posicion]);
 	}
 	
 	public boolean registrarLibro(Libro libro) {
@@ -56,11 +92,50 @@ public class Biblioteca {
 		}
 		return resultados;
 	}
-	public void listarLibros() {
-		for (Libro libro : libros) {
-		    System.out.println(libro);
-		}
+	public void mostrarLibrosAgrupados(List<Libro> resultados) {
+	    List<Libro> librosMostrados = new ArrayList<Libro>();
+
+	    for (Libro libro : resultados) {
+	        boolean yaMostrado = false;
+
+	        for (Libro mostrado : librosMostrados) {
+	            if (mostrado.getTitulo().equalsIgnoreCase(libro.getTitulo())
+	                    && mostrado.getAutor().equalsIgnoreCase(libro.getAutor())) {
+	                yaMostrado = true;
+	                break;
+	            }
+	        }
+
+	        if (!yaMostrado) {
+	            int total = 0;
+	            int disponibles = 0;
+
+	            for (Libro existente : libros) {
+	                if (existente.getTitulo().equalsIgnoreCase(libro.getTitulo())
+	                        && existente.getAutor().equalsIgnoreCase(libro.getAutor())) {
+	                    total++;
+
+	                    if (existente.isDisponible()) {
+	                        disponibles++;
+	                    }
+	                }
+	            }
+
+	            int prestados = total - disponibles;
+
+	            System.out.println(libro.getTitulo() + " - " + libro.getAutor()
+	                    + " [" + total + "] Disponibles [" + disponibles
+	                    + "] Prestados [" + prestados + "]");
+
+	            librosMostrados.add(libro);
+	        }
+	    }
 	}
+	
+	public void listarLibros() {
+	    mostrarLibrosAgrupados(libros);
+	}
+	
 	public boolean registrarSocio(Socio socio) {
 		for (Socio existente : socios) {
 		    if (existente.getNumeroSocio() == socio.getNumeroSocio()) {
