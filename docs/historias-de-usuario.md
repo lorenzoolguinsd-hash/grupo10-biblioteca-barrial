@@ -6,21 +6,21 @@ Las siguientes historias de usuario describen las principales necesidades de las
 
 ## Historias de usuario
 
-### HU01 - Registrar libros
+### HU01 – Registrar libros
 
-Como bibliotecario, quiero registrar nuevos libros para mantener actualizado el catálogo de la biblioteca.
+Como bibliotecario, quiero registrar libros indicando su título, autor y cantidad de ejemplares, para incorporar varios ejemplares al catálogo con códigos identificadores generados automáticamente.
 
 ### HU02 - Eliminar libros
 
 Como bibliotecario, quiero eliminar libros del catálogo para mantener la información actualizada.
 
-### HU03 - Buscar libros (por titulo o codigo)
+### HU03 – Buscar libros
 
-Como bibliotecario, quiero buscar libros por título o código identificador para encontrar rápidamente un ejemplar.
+Como bibliotecario, quiero buscar libros por título o código identificador, para consultar los ejemplares registrados. La búsqueda por título deberá mostrar los resultados agrupados por título y autor, mientras que la búsqueda por código permitirá identificar un ejemplar específico.
 
-### HU04 - Consultar catálogo (mostrar todos los libro registrados)
+### HU04 – Consultar catálogo
 
-Como bibliotecario, quiero visualizar todos los libros registrados para conocer el material disponible.
+Como bibliotecario, quiero consultar el catálogo agrupado por título y autor, para conocer la cantidad total de ejemplares, disponibles y prestados de cada libro.
 
 ### HU05 - Registrar socios
 
