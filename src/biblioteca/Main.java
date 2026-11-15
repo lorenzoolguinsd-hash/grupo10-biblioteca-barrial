@@ -60,22 +60,45 @@ public class Main {
 		
 		switch (opcion) {
 
-		    case 1:
-		        // Registrar libro
-		    	String codigo = leerTextoNoVacio(scanner, "Ingrese el código del libro: ");
 
-		    	String titulo = leerTextoNoVacio(scanner, "Ingrese el título del libro: ");
+		case 0:
+		    System.out.println("Volviendo al menú principal...");
+		    break;
+		case 1:
+		    // Registrar libro
+		    String titulo = leerTextoNoVacio(scanner, "Ingrese el título del libro: ");
+		    String autor = leerTextoNoVacio(scanner, "Ingrese el autor del libro: ");
+		
+		    int cantidad = leerEntero(scanner, "Ingrese la cantidad de ejemplares: ");
+		
+		    while (cantidad <= 0) {
+		        System.out.println("La cantidad debe ser mayor que cero.");
+		        cantidad = leerEntero(scanner, "Ingrese la cantidad de ejemplares: ");
+		    }
+		
+		    int registrados = 0;
+		
+		    for (int i = 1; i <= cantidad; i++) {
+		        String codigo = biblioteca.generarCodigoLibro(titulo);
+		
+		        if (codigo == null) {
+		            System.out.println("Se alcanzó el límite de códigos disponibles.");
+		            break;
+		        }
+		
+		        Libro libro = new Libro(codigo, titulo, autor);
+		
+		        if (biblioteca.registrarLibro(libro)) {
+		            registrados++;
+		            System.out.println("Ejemplar registrado. Código: " + codigo);
+		        } else {
+		            System.out.println("No se pudo registrar el ejemplar.");
+		        }
+		    }
+		
+		    System.out.println("Se registraron " + registrados + " de " + cantidad + " ejemplares.");
+		    break;
 
-		    	String autor = leerTextoNoVacio(scanner, "Ingrese el autor del libro: ");
-		    	
-		    	Libro libro = new Libro(codigo, titulo, autor);
-		    	
-		    	if (biblioteca.registrarLibro(libro)) {
-		    	    System.out.println("Libro registrado correctamente.");
-		    	} else {
-		    	    System.out.println("No se pudo registrar el libro. El código ya existe.");
-		    	}
-		        break;
 	
 		    case 2:
 		        // Buscar libro
@@ -110,10 +133,7 @@ public class Main {
 		                    System.out.println("No se encontraron libros con ese título.");
 		                } else {
 		                    System.out.println("\nLibros encontrados:");
-
-		                    for (Libro libroEncontradoTitulo : resultados) {
-		                        System.out.println(libroEncontradoTitulo);
-		                    }
+		                    biblioteca.mostrarLibrosAgrupados(resultados);
 		                }
 		                break;
 
@@ -147,6 +167,10 @@ public class Main {
 		                System.out.println("No se pudo eliminar el libro.");
 		            }
 		        }
+		        break;
+		        
+		    default:
+		        System.out.println("Opción inválida.");
 		        break;
 			} 
 		} while (opcion != 0);
