@@ -9,10 +9,10 @@ Desarrollar un sistema de gestión para una biblioteca barrial que permita admin
 El sistema deberá permitir:
 
 **Gestión de libros**
-- RF01: Registrar nuevos libros.
-- RF02: Eliminar libros del catálogo.
-- RF03: Buscar libros por título o código identificador.
-- RF04: Mostrar todos los libros registrados.
+- RF01: Registrar libros indicando la cantidad de ejemplares. Cada ejemplar tendrá un código identificador único generado automáticamente.
+- RF02: Eliminar ejemplares del catálogo mediante su código identificador, siempre que estén disponibles.
+- RF03: Buscar libros por título o código identificador. La búsqueda por título mostrará los resultados agrupados por título y autor, mientras que la búsqueda por código identificará un ejemplar específico.
+- RF04: Mostrar el catálogo de libros agrupado por título y autor, indicando la cantidad total de ejemplares, disponibles y prestados.
 
 **Gestión de socios**
 - RF05: Registrar nuevos socios.
@@ -25,10 +25,12 @@ El sistema deberá permitir:
 
 ## 3. Reglas del sistema
 
-- Un libro que ya está prestado no puede volver a prestarse.
+- Un ejemplar que ya está prestado no puede volver a prestarse.
 - Solo los socios registrados pueden solicitar préstamos.
-- No se puede devolver un libro que no figure como prestado.
-- Cada libro debe contar con un código identificador único.
+- No se puede devolver un ejemplar que no figure como prestado por el socio.
+- Cada ejemplar debe contar con un código identificador único.
+- Los códigos de los ejemplares se generan automáticamente a partir de la primera letra del título.
+- Cada ejemplar físico se administra individualmente, aunque se muestre agrupado junto con otros ejemplares del mismo libro.
 
 ## 4. Estructuras de datos
 
